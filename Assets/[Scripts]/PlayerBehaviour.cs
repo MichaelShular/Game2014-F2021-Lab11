@@ -14,7 +14,7 @@ public class PlayerBehaviour : MonoBehaviour
     [Range(0.1f, 0.9f)]
     public float airControlFactor;
 
-    private Rigidbody2D rigidbody;
+    private Rigidbody2D playerRigidbody;
 
     private Animator animatorController;
 
@@ -23,7 +23,7 @@ public class PlayerBehaviour : MonoBehaviour
     void Start()
     {
         animatorController = GetComponent<Animator>();
-        rigidbody = GetComponent<Rigidbody2D>();
+        playerRigidbody = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -65,11 +65,11 @@ public class PlayerBehaviour : MonoBehaviour
             float horizontalMoveForce = x * horizontalForce;
             float jumpMoveForce = jump * verticalForce; 
 
-            float mass = rigidbody.mass * rigidbody.gravityScale;
+            float mass = playerRigidbody.mass * playerRigidbody.gravityScale;
 
 
-            rigidbody.AddForce(new Vector2(horizontalMoveForce, jumpMoveForce) * mass);
-            rigidbody.velocity *= 0.99f; // scaling / stopping hack
+            playerRigidbody.AddForce(new Vector2(horizontalMoveForce, jumpMoveForce) * mass);
+            playerRigidbody.velocity *= 0.99f; // scaling / stopping hack
         }
         else //Air control
         {
@@ -79,9 +79,9 @@ public class PlayerBehaviour : MonoBehaviour
             {
                 x = FlipAnimation(x);
                 float horizontalMoveForce = x * horizontalForce * airControlFactor;
-                float mass = rigidbody.mass * rigidbody.gravityScale;
+                float mass = playerRigidbody.mass * playerRigidbody.gravityScale;
 
-                rigidbody.AddForce(new Vector2(horizontalMoveForce, 0.0f) * mass);
+                playerRigidbody.AddForce(new Vector2(horizontalMoveForce, 0.0f) * mass);
             }
 
         }
