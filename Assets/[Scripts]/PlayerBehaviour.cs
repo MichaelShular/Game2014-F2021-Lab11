@@ -14,9 +14,13 @@ public class PlayerBehaviour : MonoBehaviour
 
     private Rigidbody2D rigidbody;
 
+    private Animator animatorController;
+
+
     // Start is called before the first frame update
     void Start()
     {
+        animatorController = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody2D>();
     }
 
@@ -43,8 +47,13 @@ public class PlayerBehaviour : MonoBehaviour
             if (x != 0)
             {
                 x = FlipAnimation(x);
-            } 
-            
+                animatorController.SetInteger("AnimationState", 1);//Run state
+            }
+            else
+            {
+                animatorController.SetInteger("AnimationState", 0);//Idle state
+            }
+
             // Touch Input
             Vector2 worldTouch = new Vector2();
             foreach (var touch in Input.touches)
@@ -60,6 +69,10 @@ public class PlayerBehaviour : MonoBehaviour
 
             rigidbody.AddForce(new Vector2(horizontalMoveForce, jumpMoveForce) * mass);
             rigidbody.velocity *= 0.99f; // scaling / stopping hack
+        }
+        else
+        {
+            animatorController.SetInteger("AnimationState", 2); //Jump State
         }
 
     }
