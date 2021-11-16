@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
+    [SerializeField] private Joystick joystick;
+
     [Header("Movement")] 
     public float horizontalForce;
     public float verticalForce;
@@ -17,6 +19,8 @@ public class PlayerBehaviour : MonoBehaviour
     private Rigidbody2D playerRigidbody;
 
     private Animator animatorController;
+
+
 
     
     // Start is called before the first frame update
@@ -35,13 +39,13 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void Move()
     {
-        float x = Input.GetAxisRaw("Horizontal");
+        float x = Input.GetAxisRaw("Horizontal") + joystick.Horizontal;
 
         if (isGrounded)
         {
             // Keyboard Input
-            float y = Input.GetAxisRaw("Vertical");
-            float jump = Input.GetAxisRaw("Jump");
+            float y = Input.GetAxisRaw("Vertical") + joystick.Vertical;
+            float jump = Input.GetAxisRaw("Jump") + ((UIController.jumpButtonDown) ? 1.0f : 0.0f);
 
             // Check for Flip
 
