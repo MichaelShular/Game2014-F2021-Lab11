@@ -122946,7 +122946,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &711262296
 RectTransform:
   m_ObjectHideFlags: 0
@@ -123012,7 +123012,7 @@ GameObject:
   - component: {fileID: 843990577}
   - component: {fileID: 843990576}
   - component: {fileID: 843990580}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -123136,6 +123136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   joystick: {fileID: 679650634}
+  sensativity: 0.5
   horizontalForce: 10
   verticalForce: 40
   isGrounded: 0
@@ -123381,7 +123382,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.1111112, y: 1}
+    m_SensorSize: {x: 1.6368159, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -123429,7 +123430,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1700442297}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 30.9, y: 4, z: -6.43832}
+  m_LocalPosition: {x: -10.5, y: 4, z: -6.43832}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -125808,7 +125809,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4081342215266243811, guid: 9551464931923714db720f898f69b357, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 44.81
+      value: 12.4
       objectReference: {fileID: 0}
     - target: {fileID: 4081342215266243811, guid: 9551464931923714db720f898f69b357, type: 3}
       propertyPath: m_LocalPosition.y

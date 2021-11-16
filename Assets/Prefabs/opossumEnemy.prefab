@@ -73,7 +73,9 @@ GameObject:
   - component: {fileID: 4081342215266243809}
   - component: {fileID: 4081342215266243808}
   - component: {fileID: 4081342215266243812}
+  - component: {fileID: -5506563687197729816}
   - component: {fileID: 7235213363559161406}
+  - component: {fileID: 6626209793272378926}
   m_Layer: 0
   m_Name: opossumEnemy
   m_TagString: Untagged
@@ -215,6 +217,34 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!60 &-5506563687197729816
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4081342215266243823}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.25, y: 1.75}
+    newSize: {x: 0.36, y: 0.28}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -1.1429329, y: 0.114528656}
+      - {x: -7, y: -0.5542011}
+      - {x: -6.8778877, y: 1.8796778}
 --- !u!114 &7235213363559161406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,6 +257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a1f7073e4bb81e4887d103e28eac520, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyLOS: {fileID: 0}
   runForce: 5
   lookAheadPoint: {fileID: 886919069}
   lookInFrontPoint: {fileID: 1612035787}
@@ -237,3 +268,32 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   isGroundAhead: 0
+  animatorController: {fileID: 0}
+--- !u!114 &6626209793272378926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4081342215266243823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfe72a4d1da2c9a499980893aa7d6f9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collidesWith: {fileID: 0}
+  contactFilter:
+    useTriggers: 1
+    useLayerMask: 1
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 448
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
+  colliderList: []

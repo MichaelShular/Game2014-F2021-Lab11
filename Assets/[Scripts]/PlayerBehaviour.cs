@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerBehaviour : MonoBehaviour
 {
     [SerializeField] private Joystick joystick;
+    [Range(0.01f, 1.0f)]
+    [SerializeField] private float sensativity; 
 
     [Header("Movement")] 
     public float horizontalForce;
@@ -39,12 +41,12 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void Move()
     {
-        float x = Input.GetAxisRaw("Horizontal") + joystick.Horizontal;
+        float x = (Input.GetAxisRaw("Horizontal") + joystick.Horizontal) * sensativity;
 
         if (isGrounded)
         {
             // Keyboard Input
-            float y = Input.GetAxisRaw("Vertical") + joystick.Vertical;
+            float y = (Input.GetAxisRaw("Vertical") + joystick.Vertical) * sensativity;
             float jump = Input.GetAxisRaw("Jump") + ((UIController.jumpButtonDown) ? 1.0f : 0.0f);
 
             // Check for Flip
