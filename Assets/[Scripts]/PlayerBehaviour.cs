@@ -15,6 +15,7 @@ public class PlayerBehaviour : MonoBehaviour
     public Transform groundOrigin;
     public float groundRadius;
     public LayerMask groundLayerMask;
+
     [Range(0.1f, 0.9f)]
     public float airControlFactor;
 
@@ -97,7 +98,6 @@ public class PlayerBehaviour : MonoBehaviour
     private void CheckIfGrounded()
     {
         RaycastHit2D hit = Physics2D.CircleCast(groundOrigin.position, groundRadius, Vector2.down, groundRadius, groundLayerMask);
-
         isGrounded = (hit) ? true : false;
     }
 
