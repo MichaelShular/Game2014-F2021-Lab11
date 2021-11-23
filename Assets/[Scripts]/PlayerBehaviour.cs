@@ -23,7 +23,8 @@ public class PlayerBehaviour : MonoBehaviour
 
     private Animator animatorController;
 
-
+    [Header("Sound FX")]
+    public AudioSource jumpSound;
 
     
     // Start is called before the first frame update
@@ -31,6 +32,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
         animatorController = GetComponent<Animator>();
         playerRigidbody = GetComponent<Rigidbody2D>();
+        jumpSound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -49,6 +51,11 @@ public class PlayerBehaviour : MonoBehaviour
             // Keyboard Input
             float y = (Input.GetAxisRaw("Vertical") + joystick.Vertical) * sensativity;
             float jump = Input.GetAxisRaw("Jump") + ((UIController.jumpButtonDown) ? 1.0f : 0.0f);
+
+            if(jump > 0)
+            {
+                jumpSound.Play();
+            }
 
             // Check for Flip
 
