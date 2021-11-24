@@ -2,8 +2,8 @@
     "m_SelectedDeviceId": "emulator-5554",
     "m_SelectedPackage": {
         "deviceId": "emulator-5554",
-        "name": "com.GeorgeBrownCollege.GAME2014F2021Lab8",
-        "processId": 3171,
+        "name": "com.GeorgeBrownCollege.GAME2014F2021Lab9",
+        "processId": 3119,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -24,6 +24,18 @@
             "deviceId": "emulator-5554",
             "name": "com.GeorgeBrownCollege.GAME2014F2021Lab8",
             "processId": 3171,
+            "exited": false
+        },
+        {
+            "deviceId": "emulator-5554",
+            "name": "com.GeorgeBrownCollege.GAME2014F2021Lab9",
+            "processId": 2922,
+            "exited": false
+        },
+        {
+            "deviceId": "emulator-5554",
+            "name": "com.GeorgeBrownCollege.GAME2014F2021Lab9",
+            "processId": 3119,
             "exited": false
         }
     ],
