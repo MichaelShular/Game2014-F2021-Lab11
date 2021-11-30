@@ -26,13 +26,19 @@ public class PlayerBehaviour : MonoBehaviour
     [Header("Sound FX")]
     public AudioSource jumpSound;
 
-    
+    [Header("Dust Trail")]
+    public ParticleSystem dustTrail;
+    public Color dustColor;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
         animatorController = GetComponent<Animator>();
         playerRigidbody = GetComponent<Rigidbody2D>();
         jumpSound = GetComponent<AudioSource>();
+        dustTrail = GetComponentInChildren<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -55,14 +61,17 @@ public class PlayerBehaviour : MonoBehaviour
             if(jump > 0)
             {
                 jumpSound.Play();
+                CreateDustTrail();
             }
 
             // Check for Flip
 
             if (x != 0)
             {
+
                 x = FlipAnimation(x);
                 animatorController.SetInteger("AnimationState", (int)PlayerAnimationStates.RUN);//Run state
+                CreateDustTrail();
             }
             else
             {
@@ -97,7 +106,7 @@ public class PlayerBehaviour : MonoBehaviour
 
                 playerRigidbody.AddForce(new Vector2(horizontalMoveForce, 0.0f) * mass);
             }
-
+            CreateDustTrail();
         }
 
     }
@@ -131,6 +140,12 @@ public class PlayerBehaviour : MonoBehaviour
         {
             transform.SetParent(null);
         }
+    }
+
+    private void CreateDustTrail()
+    {
+        dustTrail.GetComponent<Renderer>().material.SetColor("_Color", dustColor);
+        dustTrail.Play();
     }
 
 
