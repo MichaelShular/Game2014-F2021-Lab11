@@ -15,11 +15,11 @@ TagManager:
   - Platform
   - WallLayer
   - Player
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Background
+  - DeathPlane
+  - MarkerLayer
+  - Enemy
+  - EnemyMarker
   - 
   - 
   - 
