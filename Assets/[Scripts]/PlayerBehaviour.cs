@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
@@ -30,15 +31,27 @@ public class PlayerBehaviour : MonoBehaviour
     public ParticleSystem dustTrail;
     public Color dustColor;
 
+    public CinemachineVirtualCamera cam;
+    public CinemachineBasicMultiChannelPerlin perlin;
+    public float shakeInten;
+    public float shakeDur;
+    public float shakeTimer;
+    public bool isShaking;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
+        isShaking = false;
+        shakeTimer = shakeDur;
+
         animatorController = GetComponent<Animator>();
         playerRigidbody = GetComponent<Rigidbody2D>();
         jumpSound = GetComponent<AudioSource>();
         dustTrail = GetComponentInChildren<ParticleSystem>();
+
+        perlin = cam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
     }
 
     // Update is called once per frame
@@ -46,6 +59,17 @@ public class PlayerBehaviour : MonoBehaviour
     {
         Move();
         CheckIfGrounded();
+
+        if (isShaking)
+        {
+            shakeTimer -= Time.deltaTime;
+            if(shakeTimer <= 0.0f)
+            {
+                perlin.m_AmplitudeGain = 0;
+                shakeTimer = shakeDur;
+                isShaking = false;
+            }
+        }
     }
 
     private void Move()
@@ -62,6 +86,7 @@ public class PlayerBehaviour : MonoBehaviour
             {
                 jumpSound.Play();
                 CreateDustTrail();
+                shakeCamera();
             }
 
             // Check for Flip
@@ -146,6 +171,12 @@ public class PlayerBehaviour : MonoBehaviour
     {
         dustTrail.GetComponent<Renderer>().material.SetColor("_Color", dustColor);
         dustTrail.Play();
+    }
+
+    private void shakeCamera()
+    {
+        perlin.m_AmplitudeGain = shakeInten;
+        isShaking = true;
     }
 
 
