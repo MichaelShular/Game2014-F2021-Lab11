@@ -17,6 +17,10 @@ public class EnemyContoller : MonoBehaviour
     public Animator animatorController;
 
     private Rigidbody2D enemyRigidbody;
+
+    [SerializeField] private GameObject bullet;
+    [SerializeField] private float fireDelay;
+    private Vector3 playerPos;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +45,8 @@ public class EnemyContoller : MonoBehaviour
         }
         else
         {
+            FireBullet();
+
             animatorController.enabled = false;
         }
 
@@ -62,11 +68,12 @@ public class EnemyContoller : MonoBehaviour
                 {
                     if (collider.gameObject.CompareTag("Player"))
                     {
+                        
                         var hit = Physics2D.Raycast(transform.position, Vector3.Normalize(collider.transform.position - transform.position), 2.0f, enemyLOS.contactFilter.layerMask);
                         if(hit.collider.gameObject.CompareTag("Player"))
                         {
+                            
                             return true;
-
                         }
 
                         
@@ -138,4 +145,16 @@ public class EnemyContoller : MonoBehaviour
         Gizmos.DrawLine(lookAheadPoint.position, this.transform.position);
         Gizmos.DrawLine(lookInFrontPoint.position, this.transform.position);
     }
+
+    private void FireBullet()
+    {
+        if(Time.frameCount % fireDelay == 0)
+        {
+            GameObject temp = Instantiate(bullet);
+            temp.GetComponent<BulletBehaviour>().setDirection(Vector3.Normalize(GameObject.Find("Player").transform.position - this.transform.position));
+            temp.transform.position = this.transform.position;
+        }
+
+    }
+
 }

@@ -52,6 +52,8 @@ public class PlayerBehaviour : MonoBehaviour
         dustTrail = GetComponentInChildren<ParticleSystem>();
 
         perlin = cam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+
+        
     }
 
     // Update is called once per frame
@@ -86,14 +88,13 @@ public class PlayerBehaviour : MonoBehaviour
             {
                 jumpSound.Play();
                 CreateDustTrail();
-                shakeCamera();
+               
             }
 
             // Check for Flip
 
             if (x != 0)
             {
-
                 x = FlipAnimation(x);
                 animatorController.SetInteger("AnimationState", (int)PlayerAnimationStates.RUN);//Run state
                 CreateDustTrail();
@@ -101,6 +102,7 @@ public class PlayerBehaviour : MonoBehaviour
             else
             {
                 animatorController.SetInteger("AnimationState", (int)PlayerAnimationStates.IDLE);//Idle state
+
             }
 
             // Touch Input
@@ -173,7 +175,7 @@ public class PlayerBehaviour : MonoBehaviour
         dustTrail.Play();
     }
 
-    private void shakeCamera()
+    public void shakeCamera()
     {
         perlin.m_AmplitudeGain = shakeInten;
         isShaking = true;

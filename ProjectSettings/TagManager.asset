@@ -20,7 +20,7 @@ TagManager:
   - MarkerLayer
   - Enemy
   - EnemyMarker
-  - 
+  - EnemyBullet
   - 
   - 
   - 

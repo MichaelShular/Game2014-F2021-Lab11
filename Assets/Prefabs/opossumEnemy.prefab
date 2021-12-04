@@ -270,6 +270,8 @@ MonoBehaviour:
     m_Bits: 0
   isGroundAhead: 0
   animatorController: {fileID: 0}
+  bullet: {fileID: 5844253520649517373, guid: bde701e806d9fcd43a9854a2a70712cf, type: 3}
+  fireDelay: 20
 --- !u!114 &6626209793272378926
 MonoBehaviour:
   m_ObjectHideFlags: 0
